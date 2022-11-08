@@ -1,15 +1,35 @@
 ---
+import * as Astronic from '../core/Astronic.astro'
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astronic</title>
+        <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+        <script is:inline src="/assets/plugins/global/plugins.bundle.js"></script>
+        <script is:inline src="/assets/js/scripts.bundle.js"></script>
+    </head>
+    <body>
+        <Astronic.Carousel options={{
+            id: 'carousel'
+        }}>
+            {Array(5).fill(true).map(() => (
+                <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                    <img src="assets/media/plugins/jstree/32px.png" class="card-rounded shadow mw-100" alt="" />
+                </div>
+            ))}
+        </Astronic.Carousel>
+    </body>
 </html>
+<script>
+    import Astronic from '../core/Astronic'
+    Astronic.onInit = () => {
+        console.log(Astronic.Carousel.getInfo('carousel'))
+    }
+    Astronic.init()
+</script>
