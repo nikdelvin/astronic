@@ -1,5 +1,5 @@
 ---
-import * as Astronic from '../core/Astronic.astro'
+import Carousel from '../astronic/components/Carousel.astro'
 ---
 
 <html lang="en">
@@ -15,21 +15,33 @@ import * as Astronic from '../core/Astronic.astro'
         <script is:inline src="/assets/js/scripts.bundle.js"></script>
     </head>
     <body>
-        <Astronic.Carousel options={{
+        <Carousel options={{
             id: 'carousel'
         }}>
-            {Array(5).fill(true).map(() => (
+            {Array(10).fill(true).map(() => (
                 <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
                     <img src="assets/media/plugins/jstree/32px.png" class="card-rounded shadow mw-100" alt="" />
                 </div>
             ))}
-        </Astronic.Carousel>
+        </Carousel>
+        <Carousel options={{
+            id: 'carousel2'
+        }}>
+            {Array(10).fill(true).map(() => (
+                <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                    <img src="assets/media/plugins/jstree/32px.png" class="card-rounded shadow mw-100" alt="" />
+                </div>
+            ))}
+        </Carousel>
     </body>
 </html>
 <script>
-    import Astronic from '../core/Astronic'
+    import { Astronic, AstronicType } from '../astronic/Core.astro'
     Astronic.onInit = () => {
-        console.log(Astronic.Carousel.getInfo('carousel'))
+        customElements.whenDefined('astronic-carousel').then(() => {
+            const carousel1 = document.querySelector('[data-astronic-tns-id="carousel"]') as AstronicType['Carousel']
+            console.log(carousel1?.getInfo())
+        })
     }
     Astronic.init()
 </script>

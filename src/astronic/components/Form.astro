@@ -1,0 +1,34 @@
+---
+interface FormFields {
+    [key: string]: {
+        validators: {
+            base64?: {
+                message?: string
+            },
+            between? : {
+                inclusive?: boolean,
+                max: number,
+                min: number,
+                message?: string
+            },
+            bic?: {
+                message?: string
+            },
+            callback?: {
+                callback: Function,
+                message?: string
+            },
+        }
+    }
+}
+
+interface FormPlugins {
+    alias?: any,
+}
+
+export interface Props {
+    validate: boolean,
+    fields?: FormFields,
+    plugins?: FormPlugins
+}
+---

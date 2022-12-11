@@ -1,0 +1,57 @@
+---
+export interface AstronicType {
+    init: () => any,
+    onInit?: () => any,
+    Carousel?: HTMLElement & {
+        version: () => any,
+        getInfo: () => any,
+        callEvent: (name: 'indexChanged' | 'transitionStart' | 'transitionEnd' | 'newBreakpointStart' | 'newBreakpointEnd' | 'touchStart' | 'touchMove' | 'touchEnd' | 'dragStart' | 'dragMove' | 'dragEnd', callback: Function) => any,
+        removeEvent: (name: 'indexChanged' | 'transitionStart' | 'transitionEnd' | 'newBreakpointStart' | 'newBreakpointEnd' | 'touchStart' | 'touchMove' | 'touchEnd' | 'dragStart' | 'dragMove' | 'dragEnd', callback: Function) => any,
+        goTo: (slide: number) => any,
+        play: () => any,
+        pause: () => any,
+        updateSliderHeight: () => any,
+        destroy: () => any,
+        rebuild: () => any
+    },
+    Form?: {
+        addField: (field: string, options?: object) => any,
+        deregisterFilter: (name: string) => any,
+        deregisterPlugin: (name: string) => any,
+        destroy: () => any,
+        disableValidator: (field: string, validator?: string) => any,
+        enableValidator: (field: string, validator?: string) => any,
+        getElements: (field: string) => HTMLElement[],
+        getElementValue: (field: string, ele: HTMLElement, validator?: string) => string,
+        getFields: () => object,
+        getFormElement: () => HTMLElement,
+        getPlugin: (name: string) => any,
+        removeEvent: (event: 'core.element.notvalidated event' | 'core.element.validated' | 'core.element.validating' |
+        'core.field.added' | '', func: Function) => any,
+        callEvent: (event: '', func: Function) => any,
+        registerFilter: (name: string, func: Function) => any,
+        registerPlugin: (name: string, plugin: object) => any,
+        registerValidator: (name: string, func: Function) => any,
+        removeField: (field: string) => any,
+        resetField: (field: string, reset?: boolean) => any,
+        resetForm: (reset?: boolean) => any,
+        revalidateField: (field: string) => Promise<any>,
+        setFieldOptions: (field: string, options: object) => any,
+        setLocale: (locale: string, localization: object) => any,
+        updateElementStatus: (field: string, ele: HTMLElement, status: string, validator?: string) => any,
+        updateFieldStatus: (field: string, status: string, validator?: string) => any,
+        updateValidatorOption: (field: string, validator: string, name: string, value: any) => any,
+        validate: () => Promise<any>,
+        validateElement: (field: string, element: HTMLElement) => Promise<any>,
+        validateField: (field: string) => Promise<any>
+    }
+}
+
+export const Astronic: AstronicType = {
+    init: () => {
+        document.addEventListener('DOMContentLoaded', function () {
+            Astronic.onInit!()
+        })
+    }
+}
+---

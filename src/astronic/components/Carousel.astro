@@ -1,0 +1,480 @@
+---
+interface CarouselOptions {
+    /** The carousel uniq ID. */
+    id: string,
+    /** Default: `"carousel"`. Controls animation behaviour.
+     * With `carousel` everything slides to the side, while `gallery` uses fade animations and changes all slides at once. */
+    mode?: 'carousel' | 'gallery',
+    /** Default: `"horizontal"`. The axis of the carousel. */
+    axis?: 'horizontal' | 'vertical',
+    /** Default: `1`. Number of slides being displayed in the viewport. If slides less or equal than `items`,
+     * the carousel won't be initialized. */
+    items?: number,
+    /** Default: `0`. Space between slides (in "px"). */
+    gutter?: number,
+    /** Default: `0`. Space on the outside (in "px"). */
+    edgePadding?: number,
+    /** Default: `false`. Controls `width` attribute of the slides. */
+    fixedWidth?: number | false,
+    /** Default: `false`. If `true`, the width of each slide will be its natural width as a `inline-block` box. */
+    autoWidth?: boolean,
+    /** Default: `false`. Maximum viewport width for `fixedWidth`/`autoWidth`. */
+    viewportMax?: number | false,
+    /** Default: `1`. Number of slides going on one "click". */
+    slideBy?: number | 'page',
+    /** Default: `false`. Center the active slide in the viewport. */
+    center?: boolean,
+    /** Default: `true`. Controls the display and functionalities of `controls` components (prev/next buttons).
+     * If `true`, display the `controls` and add all functionalities. For better accessibility, when a prev/next button is focused,
+     * user will be able to control the carousel using left/right arrow keys. */
+    controls?: boolean,
+    /** Default: `"top"`. Controls `controls` position. */
+    controlsPosition?: 'top' | 'bottom',
+    /** Default: `["prev", "next"]`. Text or markup in the prev/next buttons. */
+    controlsText?: [string, string],
+    /** Default: `false`. The container element/selector around the prev/next buttons.
+     * `controlsContainer` must have at least 2 child elements. */
+    controlsContainer?: Node | string | false,
+    /** Default: `false`. Customized previous buttons. This option will be ignored if
+     * `controlsContainer` is a Node element or a CSS selector. */
+    prevButton?: Node | string | false,
+    /** Default: `false`. Customized next buttons. This option will be ignored if
+     * `controlsContainer` is a Node element or a CSS selector. */
+    nextButton?: Node | string | false,
+    /** Default: `true`. Controls the display and functionalities of `nav` components (dots). If `true`,
+     * display the `nav` and add all functionalities. */
+    nav?: boolean,
+    /** Default: `"top"`. Controls `nav` position. */
+    navPosition?: 'top' | 'bottom',
+    /** Default: `false`. The container element/selector around the dots.
+     * `navContainer` must have at least same number of children as the slides. */
+    navContainer?: Node | string | false,
+    /** Default: `false`. Indicate if the dots are thumbnails. If `true`, they will
+     * always be visible even when more than 1 slides displayed in the viewport. */
+    navAsThumbnails?: boolean,
+    /** Default: `false`. Allows using arrow keys to switch slides. */
+    arrowKeys?: boolean,
+    /** Default: `300`. Speed of the slide animation (in "ms"). */
+    speed?: number,
+    /** Default: `false`. Toggles the automatic change of slides. */
+    autoplay?: boolean,
+    /** Default: `"top"`. Controls `autoplay` position. */
+    autoplayPosition?: 'top' | 'bottom',
+    /** Default: `5000`. Time between 2 `autoplay` slides change (in "ms"). */
+    autoplayTimeout?: number,
+    /** Default: `"forward"`. Direction of slide movement (ascending/descending the slide index). */
+    autoplayDirection?: 'forward' | 'backward',
+    /** Default: `["start", "stop"]`. Text or markup in the autoplay start/stop button. */
+    autoplayText?: [string, string],
+    /** Default: `false`. Stops sliding on mouseover. */
+    autoplayHoverPause?: boolean,
+    /** Default: `false`. The customized autoplay start/stop button or selector. */
+    autoplayButton?: Node | string | false,
+    /** Default: `true`. Output `autoplayButton` markup when `autoplay` is true
+     * but a customized `autoplayButton` is not provided. */
+    autoplayButtonOutput?: boolean,
+    /** Default: `true`. Pauses the sliding when the page is invisible
+     * and resumes it when the page become visiable again. */
+    autoplayResetOnVisibility?: boolean,
+    /** Default: `"tns-fadeIn"`. Name of intro animation class. */
+    animateIn?: string,
+    /** Default: `"tns-fadeOut"`. Name of outro animation class. */
+    animateOut?: string,
+    /** Default: `"tns-normal"`. Name of default animation class. */
+    animateNormal?: string,
+    /** Default: `false`. Time between each gallery animation (in "ms"). */
+    animateDelay?: number | false,
+    /** Default: `true`. Moves throughout all the slides seamlessly. */
+    loop?: boolean,
+    /** Default: `false`. Moves to the opposite edge when reaching the first or last slide. */
+    rewind?: boolean,
+    /** Default: `false`. Height of carousel container changes according to each slide's height. */
+    autoHeight?: boolean,
+    /** Default: `false`. Defines options for different viewport widths. */
+    responsive?: {
+        [key: number]: {
+            /** Default: `0`. The initial `index` of the carousel. */
+            startIndex?: number,
+            /** Default: `1`. Number of slides being displayed in the viewport. If slides less or equal than `items`,
+             * the carousel won't be initialized. */
+            items?: number,
+            /** Default: `1`. Number of slides going on one "click". */
+            slideBy?: number | 'page',
+            /** Default: `300`. Speed of the slide animation (in "ms"). */
+            speed?: number,
+            /** Default: `false`. Height of carousel container changes according to each slide's height. */
+            autoHeight?: boolean,
+            /** Default: `false`. Controls `width` attribute of the slides. */
+            fixedWidth?: number | false,
+            /** Default: `0`. Space on the outside (in "px"). */
+            edgePadding?: number,
+            /** Default: `0`. Space between slides (in "px"). */
+            gutter?: number,
+            /** Default: `false`. Center the active slide in the viewport. */
+            center?: boolean,
+            /** Default: `true`. Controls the display and functionalities of `controls` components (prev/next buttons).
+             * If `true`, display the `controls` and add all functionalities. For better accessibility, when a prev/next button is focused,
+             * user will be able to control the carousel using left/right arrow keys. */
+            controls?: boolean,
+            /** Default: `["prev", "next"]`. Text or markup in the prev/next buttons. */
+            controlsText?: [string, string],
+            /** Default: `true`. Controls the display and functionalities of `nav` components (dots). If `true`,
+             * display the `nav` and add all functionalities. */
+            nav?: boolean,
+            /** Default: `false`. Toggles the automatic change of slides. */
+            autoplay?: boolean,
+            /** Default: `false`. Stops sliding on mouseover. */
+            autoplayHoverPause?: boolean,
+            /** Default: `true`. Pauses the sliding when the page is invisible
+             * and resumes it when the page become visiable again. */
+            autoplayResetOnVisibility?: boolean,
+            /** Default: `["start", "stop"]`. Text or markup in the autoplay start/stop button. */
+            autoplayText?: [string, string],
+            /** Default: `5000`. Time between 2 `autoplay` slides change (in "ms"). */
+            autoplayTimeout?: number,
+            /** Default: `true`. Activates input detection for touch devices. */
+            touch?: boolean,
+            /** Default: `false`. Changing slides by dragging them. */
+            mouseDrag?: boolean,
+            /** Default: `false`. Allows using arrow keys to switch slides. */
+            arrowKeys?: boolean,
+            /** Default: `false`. Disable carousel. */
+            disable?: boolean
+        }
+    } | false,
+    /** Default: `false`. Enables lazyloading images that are currently not viewed, thus saving bandwidth.
+     * Class `.tns-lazy-img` need to be set on every image you want to lazyload if option `lazyloadSelector` is not specified;
+     * `data-src` attribute with its value of the real image `src` is required;
+     * `width` attribute for every image is required for `autoWidth` carousel. */
+    lazyload?: boolean,
+    /** Default: `".tns-lazy-img"`. The CSS selector for lazyload images. */
+    lazyloadSelector?: string,
+    /** Default: `true`. Activates input detection for touch devices. */
+    touch?: boolean,
+    /** Default: `false`. Changing slides by dragging them. */
+    mouseDrag?: boolean,
+    /** Default: `15`. Swipe or drag will not be triggered if the angle is not inside the range. */
+    swipeAngle?: number | boolean,
+    /** Default: `false`. Prevent next transition while carousel is transforming. */
+    preventActionWhenRunning?: boolean,
+    /** Default: `false`. Prevent page from scrolling on touchmove.
+     * If set to "auto", the carousel will first check if the touch direction matches the carousel axis, then decide whether
+     * prevent the page scrolling or not. If set to "force", the carousel will always prevent the page scrolling. */
+    preventScrollOnTouch?: 'auto' | 'force' | false,
+    /** Default: `false`. Define the relationship between nested carousels.
+     * Make sure you run the inner carousel first, otherwise the height of the inner carousel container will be wrong. */
+    nested?: 'inner' | 'outer' | false,
+    /** Default: `true`. Indicate whether the carousel will be frozen
+     * (controls, nav, autoplay and other functions will stop work) when all slides can be displayed in one page. */
+    freezable?: boolean,
+    /** Default: `false`. Disable carousel. */
+    disable?: boolean,
+    /** Default: `0`. The initial `index` of the carousel. */
+    startIndex?: number,
+    /** Default: `true`. Save browser capability variables to localStorage
+     * and without detecting them everytime the carousel runs if set to true. */
+    useLocalStorage?: boolean,
+    /** Default: `false`. Optional Nonce attribute for inline style tag to allow carousel usage
+     * without `unsafe-inline Content Security Policy source. */
+    nonce?: string | false
+}
+
+export interface Props {
+    /** Astronic.Carousel options. */
+    options: CarouselOptions
+}
+
+const { options } = Astro.props
+---
+
+<div class="tns">
+    <astronic-carousel class="d-none"
+        data-astronic-tns="true"
+        data-astronic-tns-id={options.id}
+        data-astronic-tns-mode={JSON.stringify(options.mode)}
+        data-astronic-tns-axis={JSON.stringify(options.axis)}
+        data-astronic-tns-items={JSON.stringify(options.items)}
+        data-astronic-tns-gutter={JSON.stringify(options.gutter)}
+        data-astronic-tns-edge-padding={JSON.stringify(options.edgePadding)}
+        data-astronic-tns-fixed-width={JSON.stringify(options.fixedWidth)}
+        data-astronic-tns-auto-width={JSON.stringify(options.autoWidth)}
+        data-astronic-tns-viewport-max={JSON.stringify(options.viewportMax)}
+        data-astronic-tns-slide-by={JSON.stringify(options.slideBy)}
+        data-astronic-tns-center={JSON.stringify(options.center)}
+        data-astronic-tns-controls={JSON.stringify(options.controls)}
+        data-astronic-tns-controls-position={JSON.stringify(options.controlsPosition)}
+        data-astronic-tns-controls-text={JSON.stringify(options.controlsText)}
+        data-astronic-tns-controls-container={JSON.stringify(options.controlsContainer)}
+        data-astronic-tns-prev-button={JSON.stringify(options.prevButton)}
+        data-astronic-tns-next-button={JSON.stringify(options.nextButton)}
+        data-astronic-tns-nav={JSON.stringify(options.nav)}
+        data-astronic-tns-nav-position={JSON.stringify(options.navPosition)}
+        data-astronic-tns-nav-container={JSON.stringify(options.navContainer)}
+        data-astronic-tns-nav-as-thumbnails={JSON.stringify(options.navAsThumbnails)}
+        data-astronic-tns-arrow-keys={JSON.stringify(options.arrowKeys)}
+        data-astronic-tns-speed={JSON.stringify(options.speed)}
+        data-astronic-tns-autoplay={JSON.stringify(options.autoplay)}
+        data-astronic-tns-autoplay-position={JSON.stringify(options.autoplayPosition)}
+        data-astronic-tns-autoplay-timeout={JSON.stringify(options.autoplayTimeout)}
+        data-astronic-tns-autoplay-direction={JSON.stringify(options.autoplayDirection)}
+        data-astronic-tns-autoplay-text={JSON.stringify(options.autoplayText)}
+        data-astronic-tns-autoplay-hover-pause={JSON.stringify(options.autoplayHoverPause)}
+        data-astronic-tns-autoplay-button={JSON.stringify(options.autoplayButton)}
+        data-astronic-tns-autoplay-button-output={JSON.stringify(options.autoplayButtonOutput)}
+        data-astronic-tns-autoplay-reset-on-visibility={JSON.stringify(options.autoplayResetOnVisibility)}
+        data-astronic-tns-animate-in={JSON.stringify(options.animateIn)}
+        data-astronic-tns-animate-out={JSON.stringify(options.animateOut)}
+        data-astronic-tns-animate-normal={JSON.stringify(options.animateNormal)}
+        data-astronic-tns-animate-delay={JSON.stringify(options.animateDelay)}
+        data-astronic-tns-loop={JSON.stringify(options.loop)}
+        data-astronic-tns-rewind={JSON.stringify(options.rewind)}
+        data-astronic-tns-auto-height={JSON.stringify(options.autoHeight)}
+        data-astronic-tns-responsive={JSON.stringify(options.responsive)}
+        data-astronic-tns-lazyload={JSON.stringify(options.lazyload)}
+        data-astronic-tns-lazyload-selector={JSON.stringify(options.lazyloadSelector)}
+        data-astronic-tns-touch={JSON.stringify(options.touch)}
+        data-astronic-tns-mouse-drag={JSON.stringify(options.mouseDrag)}
+        data-astronic-tns-swipe-angle={JSON.stringify(options.swipeAngle)}
+        data-astronic-tns-prevent-action-when-running={JSON.stringify(options.preventActionWhenRunning)}
+        data-astronic-tns-prevent-scroll-on-touch={JSON.stringify(options.preventScrollOnTouch)}
+        data-astronic-tns-nested={JSON.stringify(options.nested)}
+        data-astronic-tns-freezable={JSON.stringify(options.freezable)}
+        data-astronic-tns-disable={JSON.stringify(options.disable)}
+        data-astronic-tns-start-index={JSON.stringify(options.startIndex)}
+        data-astronic-tns-use-local-storage={JSON.stringify(options.useLocalStorage)}
+        data-astronic-tns-nonce={JSON.stringify(options.nonce)}
+    >
+        <slot/>
+    </astronic-carousel>
+</div>
+<script>
+    class AstronicCarousel extends HTMLElement {
+        carousel: any
+        constructor () {
+            super()
+            this.carousel2 = globalThis.someTest.s
+            this.carousel = globalThis.tns({
+                container: this,
+                mode: JSON.parse(this.getAttribute('data-astronic-tns-mode')!) ?? 'carousel',
+                axis: JSON.parse(this.getAttribute('data-astronic-tns-axis')!) ?? 'horizontal',
+                items: JSON.parse(this.getAttribute('data-astronic-tns-items')!) ?? 1,
+                gutter: JSON.parse(this.getAttribute('data-astronic-tns-gutter')!) ?? 0,
+                edgePadding: JSON.parse(this.getAttribute('data-astronic-tns-edge-padding')!) ?? 0,
+                fixedWidth: JSON.parse(this.getAttribute('data-astronic-tns-fixed-width')!) ?? false,
+                autoWidth: JSON.parse(this.getAttribute('data-astronic-tns-auto-width')!) ?? false,
+                viewportMax: JSON.parse(this.getAttribute('data-astronic-tns-viewport-max')!) ?? false,
+                slideBy: JSON.parse(this.getAttribute('data-astronic-tns-slide-by')!) ?? 1,
+                center: JSON.parse(this.getAttribute('data-astronic-tns-center')!) ?? false,
+                controls: JSON.parse(this.getAttribute('data-astronic-tns-controls')!) ?? true,
+                controlsPosition: JSON.parse(this.getAttribute('data-astronic-tns-controls-position')!) ?? 'top',
+                controlsText: JSON.parse(this.getAttribute('data-astronic-tns-controls-text')!) ?? ['prev', 'next'],
+                controlsContainer: JSON.parse(this.getAttribute('data-astronic-tns-controls-container')!) ?? false,
+                prevButton: JSON.parse(this.getAttribute('data-astronic-tns-prev-button')!) ?? false,
+                nextButton: JSON.parse(this.getAttribute('data-astronic-tns-next-button')!) ?? false,
+                nav: JSON.parse(this.getAttribute('data-astronic-tns-nav')!) ?? true,
+                navPosition: JSON.parse(this.getAttribute('data-astronic-tns-nav-position')!) ?? 'top',
+                navContainer: JSON.parse(this.getAttribute('data-astronic-tns-nav-container')!) ?? false,
+                navAsThumbnails: JSON.parse(this.getAttribute('data-astronic-tns-nav-as-thumbnails')!) ?? false,
+                arrowKeys: JSON.parse(this.getAttribute('data-astronic-tns-arrow-keys')!) ?? false,
+                speed: JSON.parse(this.getAttribute('data-astronic-tns-speed')!) ?? 300,
+                autoplay: JSON.parse(this.getAttribute('data-astronic-tns-autoplay')!) ?? false,
+                autoplayPosition: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-position')!) ?? 'top',
+                autoplayTimeout: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-timeout')!) ?? 5000,
+                autoplayDirection: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-direction')!) ?? 'forward',
+                autoplayText: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-text')!) ?? ['start', 'stop'],
+                autoplayHoverPause: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-hover-pause')!) ?? false,
+                autoplayButton: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-button')!) ?? false,
+                autoplayButtonOutput: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-button-output')!) ?? true,
+                autoplayResetOnVisibility: JSON.parse(this.getAttribute('data-astronic-tns-autoplay-reset-on-visibility')!) ?? true,
+                animateIn: JSON.parse(this.getAttribute('data-astronic-tns-animate-in')!) ?? 'tns-fadeIn',
+                animateOut: JSON.parse(this.getAttribute('data-astronic-tns-animate-out')!) ?? 'tns-fadeOut',
+                animateNormal: JSON.parse(this.getAttribute('data-astronic-tns-animate-normal')!) ?? 'tns-normal',
+                animateDelay: JSON.parse(this.getAttribute('data-astronic-tns-animate-delay')!) ?? false,
+                loop: JSON.parse(this.getAttribute('data-astronic-tns-loop')!) ?? true,
+                rewind: JSON.parse(this.getAttribute('data-astronic-tns-rewind')!) ?? false,
+                autoHeight: JSON.parse(this.getAttribute('data-astronic-tns-auto-height')!) ?? false,
+                responsive: JSON.parse(this.getAttribute('data-astronic-tns-responsive')!) ?? false,
+                lazyload: JSON.parse(this.getAttribute('data-astronic-tns-lazyload')!) ?? false,
+                lazyloadSelector: JSON.parse(this.getAttribute('data-astronic-tns-lazyload-selector')!) ?? '.tns-lazy-img',
+                touch: JSON.parse(this.getAttribute('data-astronic-tns-touch')!) ?? true,
+                mouseDrag: JSON.parse(this.getAttribute('data-astronic-tns-mouse-drag')!) ?? false,
+                swipeAngle: JSON.parse(this.getAttribute('data-astronic-tns-swipe-angle')!) ?? 15,
+                preventActionWhenRunning: JSON.parse(this.getAttribute('data-astronic-tns-prevent-action-when-running')!) ?? false,
+                preventScrollOnTouch: JSON.parse(this.getAttribute('data-astronic-tns-prevent-scroll-on-touch')!) ?? false,
+                nested: JSON.parse(this.getAttribute('data-astronic-tns-nested')!) ?? false,
+                freezable: JSON.parse(this.getAttribute('data-astronic-tns-freezable')!) ?? true,
+                disable: JSON.parse(this.getAttribute('data-astronic-tns-disable')!) ?? false,
+                startIndex: JSON.parse(this.getAttribute('data-astronic-tns-start-index')!) ?? 0,
+                useLocalStorage: JSON.parse(this.getAttribute('data-astronic-tns-use-local-storage')!) ?? true,
+                nonce: JSON.parse(this.getAttribute('data-astronic-tns-nonce')!) ?? false
+            })
+            this.className = this.className.replace('d-none', 'd-flex')
+        }
+
+        version () {
+            return this.carousel.version()
+        }
+
+        getInfo () {
+            return this.carousel.getInfo()
+        }
+    }
+    customElements.define('astronic-carousel', AstronicCarousel)
+    /*
+    Astronic.Carousel = {
+        version: function (id) {
+            const element = document.querySelector(`[data-astronic-tns-id="${id}"]`) as AstronicCarousel
+            return element.version()
+        },
+        getInfo: function (id) {
+            const element = document.querySelector(`[data-astronic-tns-id="${id}"]`) as AstronicCarousel
+            return element.getInfo()
+        },
+        callEvent: function (id, name, callback) {
+            const element = document.querySelector(`[data-astronic-tns-id="${id}"]`) as AstronicCarousel
+            return element.events.on(name, callback)
+        },
+        removeEvent: function (id, name, callback) { return tnsList[id].events.off(name, callback) },
+        goTo: function (id, slide) { return tnsList[id].goTo(slide) },
+        play: function (id) { return tnsList[id].play() },
+        pause: function (id) { return tnsList[id].pause() },
+        updateSliderHeight: function (id) { return tnsList[id].updateSliderHeight() },
+        destroy: function (id) { return tnsList[id].destroy() },
+        rebuild: function (id) { return tnsList[id].rebuild() }
+    }
+    document.querySelectorAll('[data-astronic-tns="true"]').forEach((element) => {
+        const params = {
+            mode: JSON.parse(element.getAttribute('data-astronic-tns-mode')!),
+            axis: JSON.parse(element.getAttribute('data-astronic-tns-axis')!),
+            items: JSON.parse(element.getAttribute('data-astronic-tns-items')!),
+            gutter: JSON.parse(element.getAttribute('data-astronic-tns-gutter')!),
+            edgePadding: JSON.parse(element.getAttribute('data-astronic-tns-edge-padding')!),
+            fixedWidth: JSON.parse(element.getAttribute('data-astronic-tns-fixed-width')!),
+            autoWidth: JSON.parse(element.getAttribute('data-astronic-tns-auto-width')!),
+            viewportMax: JSON.parse(element.getAttribute('data-astronic-tns-viewport-max')!),
+            slideBy: JSON.parse(element.getAttribute('data-astronic-tns-slide-by')!),
+            center: JSON.parse(element.getAttribute('data-astronic-tns-center')!),
+            controls: JSON.parse(element.getAttribute('data-astronic-tns-controls')!),
+            controlsPosition: JSON.parse(element.getAttribute('data-astronic-tns-controls-position')!),
+            controlsText: JSON.parse(element.getAttribute('data-astronic-tns-controls-text')!),
+            controlsContainer: JSON.parse(element.getAttribute('data-astronic-tns-controls-container')!),
+            prevButton: JSON.parse(element.getAttribute('data-astronic-tns-prev-button')!),
+            nextButton: JSON.parse(element.getAttribute('data-astronic-tns-next-button')!),
+            nav: JSON.parse(element.getAttribute('data-astronic-tns-nav')!),
+            navPosition: JSON.parse(element.getAttribute('data-astronic-tns-nav-position')!),
+            navContainer: JSON.parse(element.getAttribute('data-astronic-tns-nav-container')!),
+            navAsThumbnails: JSON.parse(element.getAttribute('data-astronic-tns-nav-as-thumbnails')!),
+            arrowKeys: JSON.parse(element.getAttribute('data-astronic-tns-arrow-keys')!),
+            speed: JSON.parse(element.getAttribute('data-astronic-tns-speed')!),
+            autoplay: JSON.parse(element.getAttribute('data-astronic-tns-autoplay')!),
+            autoplayPosition: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-position')!),
+            autoplayTimeout: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-timeout')!),
+            autoplayDirection: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-direction')!),
+            autoplayText: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-text')!),
+            autoplayHoverPause: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-hover-pause')!),
+            autoplayButton: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-button')!),
+            autoplayButtonOutput: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-button-output')!),
+            autoplayResetOnVisibility: JSON.parse(element.getAttribute('data-astronic-tns-autoplay-reset-on-visibility')!),
+            animateIn: JSON.parse(element.getAttribute('data-astronic-tns-animate-in')!),
+            animateOut: JSON.parse(element.getAttribute('data-astronic-tns-animate-out')!),
+            animateNormal: JSON.parse(element.getAttribute('data-astronic-tns-animate-normal')!),
+            animateDelay: JSON.parse(element.getAttribute('data-astronic-tns-animate-delay')!),
+            loop: JSON.parse(element.getAttribute('data-astronic-tns-loop')!),
+            rewind: JSON.parse(element.getAttribute('data-astronic-tns-rewind')!),
+            autoHeight: JSON.parse(element.getAttribute('data-astronic-tns-auto-height')!),
+            responsive: JSON.parse(element.getAttribute('data-astronic-tns-responsive')!),
+            lazyload: JSON.parse(element.getAttribute('data-astronic-tns-lazyload')!),
+            lazyloadSelector: JSON.parse(element.getAttribute('data-astronic-tns-lazyload-selector')!),
+            touch: JSON.parse(element.getAttribute('data-astronic-tns-touch')!),
+            mouseDrag: JSON.parse(element.getAttribute('data-astronic-tns-mouse-drag')!),
+            swipeAngle: JSON.parse(element.getAttribute('data-astronic-tns-swipe-angle')!),
+            preventActionWhenRunning: JSON.parse(element.getAttribute('data-astronic-tns-prevent-action-when-running')!),
+            preventScrollOnTouch: JSON.parse(element.getAttribute('data-astronic-tns-prevent-scroll-on-touch')!),
+            nested: JSON.parse(element.getAttribute('data-astronic-tns-nested')!),
+            freezable: JSON.parse(element.getAttribute('data-astronic-tns-freezable')!),
+            disable: JSON.parse(element.getAttribute('data-astronic-tns-disable')!),
+            startIndex: JSON.parse(element.getAttribute('data-astronic-tns-start-index')!),
+            onInit: element.getAttribute('data-astronic-tns-on-init'),
+            useLocalStorage: JSON.parse(element.getAttribute('data-astronic-tns-use-local-storage')!),
+            nonce: JSON.parse(element.getAttribute('data-astronic-tns-nonce')!)
+        }
+        const carousel = globalThis.tns({
+            container: element,
+            mode: (params.mode !== null) ? (params.mode) : ('carousel'),
+            axis: (params.axis !== null) ? (params.axis) : ('horizontal'),
+            items: (params.items !== null) ? (params.items) : (1),
+            gutter: (params.gutter !== null) ? (params.gutter) : (0),
+            edgePadding: (params.edgePadding !== null) ? (params.edgePadding) : (0),
+            fixedWidth: (params.fixedWidth !== null) ? (params.fixedWidth) : (false),
+            autoWidth: (params.autoWidth !== null) ? (params.autoWidth) : (false),
+            viewportMax: (params.viewportMax !== null) ? (params.viewportMax) : (false),
+            slideBy: (params.slideBy !== null) ? (params.slideBy) : (1),
+            center: (params.center !== null) ? (params.center) : (false),
+            controls: (params.controls !== null) ? (params.controls) : (true),
+            controlsPosition: (params.controlsPosition !== null) ? (params.controlsPosition) : ('top'),
+            controlsText: (params.controlsText !== null) ? (params.controlsText) : (['prev', 'next']),
+            controlsContainer: (params.controlsContainer !== null) ? (params.controlsContainer) : (false),
+            prevButton: (params.prevButton !== null) ? (params.prevButton) : (false),
+            nextButton: (params.nextButton !== null) ? (params.nextButton) : (false),
+            nav: (params.nav !== null) ? (params.nav) : (true),
+            navPosition: (params.navPosition !== null) ? (params.navPosition) : ('top'),
+            navContainer: (params.navContainer !== null) ? (params.navContainer) : (false),
+            navAsThumbnails: (params.navAsThumbnails !== null) ? (params.navAsThumbnails) : (false),
+            arrowKeys: (params.arrowKeys !== null) ? (params.arrowKeys) : (false),
+            speed: (params.speed !== null) ? (params.speed) : (300),
+            autoplay: (params.autoplay !== null) ? (params.autoplay) : (false),
+            autoplayPosition: (params.autoplayPosition !== null) ? (params.autoplayPosition) : ('top'),
+            autoplayTimeout: (params.autoplayTimeout !== null) ? (params.autoplayTimeout) : (5000),
+            autoplayDirection: (params.autoplayDirection !== null) ? (params.autoplayDirection) : ('forward'),
+            autoplayText: (params.autoplayText !== null) ? (params.autoplayText) : (['start', 'stop']),
+            autoplayHoverPause: (params.autoplayHoverPause !== null) ? (params.autoplayHoverPause) : (false),
+            autoplayButton: (params.autoplayButton !== null) ? (params.autoplayButton) : (false),
+            autoplayButtonOutput: (params.autoplayButtonOutput !== null) ? (params.autoplayButtonOutput) : (true),
+            autoplayResetOnVisibility: (params.autoplayResetOnVisibility !== null) ? (params.autoplayResetOnVisibility) : (true),
+            animateIn: (params.animateIn !== null) ? (params.animateIn) : ('tns-fadeIn'),
+            animateOut: (params.animateOut !== null) ? (params.animateOut) : ('tns-fadeOut'),
+            animateNormal: (params.animateNormal !== null) ? (params.animateNormal) : ('tns-normal'),
+            animateDelay: (params.animateDelay !== null) ? (params.animateDelay) : (false),
+            loop: (params.loop !== null) ? (params.loop) : (true),
+            rewind: (params.rewind !== null) ? (params.rewind) : (false),
+            autoHeight: (params.autoHeight !== null) ? (params.autoHeight) : (false),
+            responsive: (params.responsive !== null) ? (params.responsive) : (false),
+            lazyload: (params.lazyload !== null) ? (params.lazyload) : (false),
+            lazyloadSelector: (params.lazyloadSelector !== null) ? (params.lazyloadSelector) : ('.tns-lazy-img'),
+            touch: (params.touch !== null) ? (params.touch) : (true),
+            mouseDrag: (params.mouseDrag !== null) ? (params.mouseDrag) : (false),
+            swipeAngle: (params.swipeAngle !== null) ? (params.swipeAngle) : (15),
+            preventActionWhenRunning: (params.preventActionWhenRunning !== null) ? (params.preventActionWhenRunning) : (false),
+            preventScrollOnTouch: (params.preventScrollOnTouch !== null) ? (params.preventScrollOnTouch) : (false),
+            nested: (params.nested !== null) ? (params.nested) : (false),
+            freezable: (params.freezable !== null) ? (params.freezable) : (true),
+            disable: (params.disable !== null) ? (params.disable) : (false),
+            startIndex: (params.startIndex !== null) ? (params.startIndex) : (0),
+            onInit: (params.onInit !== null) ? ((params.onInit === 'false') ? (false) : (evalFunction.run(element, 'data-astronic-tns-on-init'))) : (false),
+            useLocalStorage: (params.useLocalStorage !== null) ? (params.useLocalStorage) : (true),
+            nonce: (params.nonce !== null) ? (params.nonce) : (false)
+        })
+        const carouselID = element.getAttribute('data-astronic-tns-id')
+        if (carouselID) {
+            tnsList[carouselID] = carousel
+        }
+        element.removeAttribute('data-astronic-tns-on-init')
+        element.className = element.className.replace('d-none', 'd-flex')
+    })
+    Astronic.Carousel = {
+        version: function (id) { return tnsList[id].version() },
+        getInfo: function (id) { return tnsList[id].getInfo() },
+        callEvent: function (id, name, callback) { return tnsList[id].events.on(name, callback) },
+        removeEvent: function (id, name, callback) { return tnsList[id].events.off(name, callback) },
+        goTo: function (id, slide) { return tnsList[id].goTo(slide) },
+        play: function (id) { return tnsList[id].play() },
+        pause: function (id) { return tnsList[id].pause() },
+        updateSliderHeight: function (id) { return tnsList[id].updateSliderHeight() },
+        destroy: function (id) { return tnsList[id].destroy() },
+        rebuild: function (id) { return tnsList[id].rebuild() }
+    }
+    */
+</script>
+<style is:global>
+    .tns .tns-item { opacity: 1!important; }
+</style>
